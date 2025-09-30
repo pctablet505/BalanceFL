@@ -1,0 +1,40 @@
+fl_opt:
+  rounds: 100
+  num_clients: 5
+  frac: 1.0         # the fraction of clients in each FL round
+  local_ep: 10      # local epoch
+  local_bs: 32      # local batch size
+  aggregation: fedavg  # fedavg, fedavgm, fedbn, fedfs
+
+criterions:
+  def_file: ./loss/KDLoss.py    # for cross entropy
+  loss_params: {Temp: 2, lamda: 0, loss_cls: ce, loss_kd: kl}
+
+networks:
+  feat_model:
+    def_file: DeepFed
+    params: 
+      input_shape: [26, 1]
+      gru_hidden_size: 128
+    optim_params: {lr: 0.001, momentum: 0.9, weight_decay: 0.0001}
+    feat_dim: 512
+    fix: false
+  classifier:
+    def_file: DotProductClassifier
+    params: {num_classes: 8, l2_norm: false, bias: true, scale: 1}   
+    optim_params: {lr: 0.001, momentum: 0.9, weight_decay: 0.0001} 
+    fix: false
+    
+dataset:
+  name: DeepFed
+  num_classes: 8
+  shot_few: 0   # if shot_few>0, (iid + non-iid) mixed mode; else, non-mixed mode
+  non_iidness: 1
+  imb_ratio: 1.0  # balanced data for intrusion detection
+
+training:
+  epochs: 100
+  batch_size: 32
+
+metainfo:
+  optimizer: SGD

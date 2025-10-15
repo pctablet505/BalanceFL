@@ -7,3 +7,5 @@
 # *.jpg
 runs_exp/
 __pycache__/
+/data
+/cache

@@ -1,0 +1,50 @@
+================================================================================
+IMBALANCED DATASET HANDLING COMPARISON SUMMARY
+================================================================================
+
+
+Baseline (No Handling)
+--------------------------------------------------------------------------------
+  Accuracy:          0.9257
+  Macro F1-Score:    0.6695
+  Weighted F1-Score: 0.9229
+  Macro Precision:   0.7040
+  Macro Recall:      0.6612
+
+Class Weights
+--------------------------------------------------------------------------------
+  Accuracy:          0.8928
+  Macro F1-Score:    0.6646
+  Weighted F1-Score: 0.9024
+  Macro Precision:   0.6593
+  Macro Recall:      0.7104
+
+SMOTE Oversampling
+--------------------------------------------------------------------------------
+  Accuracy:          0.9231
+  Macro F1-Score:    0.6831
+  Weighted F1-Score: 0.9239
+  Macro Precision:   0.7063
+  Macro Recall:      0.6921
+
+Random Undersampling
+--------------------------------------------------------------------------------
+  Accuracy:          0.1653
+  Macro F1-Score:    0.0302
+  Weighted F1-Score: 0.1809
+  Macro Precision:   0.0451
+  Macro Recall:      0.0684
+
+================================================================================
+BEST APPROACHES PER METRIC
+================================================================================
+
+Accuracy            : Baseline (No Handling)         (0.9257)
+
+Macro F1-Score      : SMOTE Oversampling             (0.6831)
+
+Weighted F1-Score   : SMOTE Oversampling             (0.9239)
+
+Macro Precision     : SMOTE Oversampling             (0.7063)
+
+Macro Recall        : Class Weights                  (0.7104)
